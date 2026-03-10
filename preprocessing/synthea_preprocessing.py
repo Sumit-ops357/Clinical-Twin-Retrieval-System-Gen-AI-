@@ -3,7 +3,7 @@ import json
 import kagglehub
 import pandas as pd
 
-def load_and_preprocess_synthea(max_patients=2000):
+def load_and_preprocess_synthea(max_patients=2000, return_df=False):
     # Set Cache Directory to D drive
     os.environ["KAGGLEHUB_CACHE"] = "d:/kagglehub_cache"
     
@@ -115,5 +115,8 @@ def load_and_preprocess_synthea(max_patients=2000):
     X = patients.fillna(0).astype(float).values
 
     print("Train Shape:", X.shape)
+
+    if return_df:
+        return patients.fillna(0)
 
     return X, patient_ids
