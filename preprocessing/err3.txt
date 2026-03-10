@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "D:\Patient_Similarity_Analysis\preprocessing\mimic_preprocessing.py", line 88, in <module>
+    run_preprocessing()
+  File "D:\Patient_Similarity_Analysis\preprocessing\mimic_preprocessing.py", line 77, in run_preprocessing
+    normalized_features, subject_ids = impute_and_normalize(features_df)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Patient_Similarity_Analysis\preprocessing\mimic_preprocessing.py", line 68, in impute_and_normalize
+    normalized_features = scaler.fit_transform(features_df)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\utils\_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\base.py", line 894, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\preprocessing\_data.py", line 907, in fit
+    return self.partial_fit(X, y, sample_weight)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\preprocessing\_data.py", line 943, in partial_fit
+    X = validate_data(
+        ^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\utils\validation.py", line 2929, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\utils\validation.py", line 2725, in _check_feature_names
+    feature_names_in = _get_feature_names(X)
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\utils\validation.py", line 2427, in _get_feature_names
+    raise TypeError(
+TypeError: Feature names are only supported if all input features have string names, but your input has ['int', 'str'] as feature name / column name types. If you want feature names to be stored and validated, you must convert them all to strings, by using X.columns = X.columns.astype(str) for example. Otherwise you can remove feature / column names from your input data, or convert them all to a non-string data type.

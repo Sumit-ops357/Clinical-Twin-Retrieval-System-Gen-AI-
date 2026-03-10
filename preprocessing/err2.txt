@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "pandas/_libs/tslibs/np_datetime.pyx", line 736, in pandas._libs.tslibs.np_datetime.add_overflowsafe
+OverflowError: value too large
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Patient_Similarity_Analysis\preprocessing\mimic_preprocessing.py", line 85, in <module>
+    run_preprocessing()
+  File "D:\Patient_Similarity_Analysis\preprocessing\mimic_preprocessing.py", line 73, in run_preprocessing
+    features_df = extract_features(patients_df, admissions_df, labevents_df)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Patient_Similarity_Analysis\preprocessing\mimic_preprocessing.py", line 32, in extract_features
+    patient_info['AGE'] = (patient_info['ADMITTIME'] - patient_info['DOB']).dt.days / 365.25
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\arraylike.py", line 194, in __sub__
+    return self._arith_method(other, operator.sub)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\series.py", line 6154, in _arith_method
+    return base.IndexOpsMixin._arith_method(self, other, op)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\base.py", line 1391, in _arith_method
+    result = ops.arithmetic_op(lvalues, rvalues, op)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\ops\array_ops.py", line 273, in arithmetic_op
+    res_values = op(left, right)
+                 ^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\arrays\datetimelike.py", line 1482, in __sub__
+    result = self._sub_datetime_arraylike(other)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\arrays\datetimelike.py", line 1179, in _sub_datetime_arraylike
+    return self._sub_datetimelike(other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\arrays\datetimelike.py", line 1194, in _sub_datetimelike
+    res_values = add_overflowsafe(self.asi8, np.asarray(-other_i8, dtype="i8"))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/tslibs/np_datetime.pyx", line 708, in pandas._libs.tslibs.np_datetime.add_overflowsafe
+  File "pandas/_libs/tslibs/np_datetime.pyx", line 743, in pandas._libs.tslibs.np_datetime.add_overflowsafe
+OverflowError: Overflow in int64 addition

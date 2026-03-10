@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "D:\Patient_Similarity_Analysis\preprocessing\mimic_preprocessing.py", line 82, in <module>
+    run_preprocessing()
+  File "D:\Patient_Similarity_Analysis\preprocessing\mimic_preprocessing.py", line 70, in run_preprocessing
+    features_df = extract_features(patients_df, admissions_df, labevents_df)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Patient_Similarity_Analysis\preprocessing\mimic_preprocessing.py", line 19, in extract_features
+    first_admissions = admissions_df.sort_values(['SUBJECT_ID', 'ADMITTIME']).groupby('SUBJECT_ID').first().reset_index()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 7194, in sort_values
+    keys = [self._get_label_or_level_values(x, axis=axis) for x in by]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 7194, in <listcomp>
+    keys = [self._get_label_or_level_values(x, axis=axis) for x in by]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SUMIT\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\generic.py", line 1914, in _get_label_or_level_values
+    raise KeyError(key)
+KeyError: 'SUBJECT_ID'

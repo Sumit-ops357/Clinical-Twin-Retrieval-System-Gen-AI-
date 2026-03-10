@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.env
+
+# Machine Learning models and Large Data Files
+# (We don't want to push massive feature matrices or weight files to GitHub)
+data/processed/*.npy
+models/saved/*.keras
+models/saved/*.h5
+models/saved/*.npy
+
+# Kaggle Cache
+kagglehub_cache/
+
+# IDE files
+.vscode/
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Evaluation outputs (optional, you can comment this out if you WANT to push plots)
+evaluation/*.png
+accuracy_results.txt
