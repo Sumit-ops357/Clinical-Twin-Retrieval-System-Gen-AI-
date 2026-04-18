@@ -34,7 +34,7 @@ def load_embeddings_and_ids():
     
     return embeddings, subject_ids
 
-def find_clinical_twins(query_index, embeddings, subject_ids, top_k=5):
+def find_clinical_twins(query_index, embeddings, subject_ids, top_k=20):
     """
     Finds the top-K similar patients to the query patient using cosine similarity.
     """
@@ -72,6 +72,6 @@ if __name__ == '__main__':
         
         # Test with a random patient index
         sample_query_idx = np.random.randint(0, len(embeddings))
-        find_clinical_twins(sample_query_idx, embeddings, subject_ids, top_k=5)
+        find_clinical_twins(sample_query_idx, embeddings, subject_ids, top_k=20)
     except FileNotFoundError as e:
         print(e)

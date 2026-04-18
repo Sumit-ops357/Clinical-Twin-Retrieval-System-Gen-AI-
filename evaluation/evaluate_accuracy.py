@@ -17,7 +17,7 @@ from retrieval.similarity_search import load_embeddings_and_ids
 # Restore stdout
 sys.stdout = old_stdout
 
-def evaluate_retrieval_accuracy(top_k=5):
+def evaluate_retrieval_accuracy(top_k=20):
     print("Initializing Accuracy Evaluation...")
     print("1. Loading raw patient data and extracting features...")
     
