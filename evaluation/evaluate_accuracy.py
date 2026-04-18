@@ -17,7 +17,7 @@ from retrieval.similarity_search import load_embeddings_and_ids
 # Restore stdout
 sys.stdout = old_stdout
 
-def evaluate_retrieval_accuracy(num_queries=100, top_k=5):
+def evaluate_retrieval_accuracy(top_k=5):
     print("Initializing Accuracy Evaluation...")
     print("1. Loading raw patient data and extracting features...")
     
@@ -33,10 +33,12 @@ def evaluate_retrieval_accuracy(num_queries=100, top_k=5):
     # Map subject ID to their raw feature vector
     id_to_features = {pid: X[idx] for idx, pid in enumerate(patient_ids_from_data)}
     
-    print(f"\nEvaluating Top-{top_k} Retrieval Accuracy over {num_queries} random patients...")
+    from sklearn.model_selection import train_test_split
+    indices = np.arange(len(embeddings))
+    _, test_idx = train_test_split(indices, test_size=0.2, random_state=42)
+    query_indices = test_idx
     
-    np.random.seed(42)
-    query_indices = np.random.choice(len(embeddings), min(num_queries, len(embeddings)), replace=False)
+    print(f"\nEvaluating Top-{top_k} Retrieval Accuracy over the {len(query_indices)} test patients...")
     
     total_exact_matches = 0
     total_comparisons = 0
@@ -82,9 +84,6 @@ def evaluate_retrieval_accuracy(num_queries=100, top_k=5):
     print("-" * 50)
     print(f"Average Feature Match: {avg_match_percent:.2f}%")
     print(f"Exact Clone Percentage: {exact_match_ratio:.2f}%")
-    print("\nNote: Because we currently only use Demographic features (Age, Gender, Race),")
-    print("the autoencoder finds exact clones easily. We need to add Medical Conditions")
-    print("to the preprocessing to get more nuanced, real-world clinical accuracy!")
 
 if __name__ == "__main__":
     evaluate_retrieval_accuracy()
