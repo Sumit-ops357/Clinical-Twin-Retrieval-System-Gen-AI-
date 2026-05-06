@@ -3,7 +3,7 @@ import json
 import kagglehub
 import pandas as pd
 
-def load_and_preprocess_synthea(max_patients=2000, return_df=False):
+def load_and_preprocess_synthea(max_patients=2000, return_df=False, classifier_predictions=None):
     # Set Cache Directory to D drive
     os.environ["KAGGLEHUB_CACHE"] = "d:/kagglehub_cache"
     
@@ -98,6 +98,10 @@ def load_and_preprocess_synthea(max_patients=2000, return_df=False):
         
         # Drop the original list column
         patients = patients.drop(columns=['CONDITIONS'])
+
+    if classifier_predictions is not None:
+        print("Adding classifier predictions as features...")
+        patients = pd.concat([patients, classifier_predictions], axis=1)
 
     # Extract patient IDs before dropping
     if 'Id' in patients.columns:

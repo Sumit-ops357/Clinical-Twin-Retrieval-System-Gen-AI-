@@ -28,6 +28,7 @@ autoencoder.fit(
     batch_size=64,
     validation_data=(X_test, X_test)
 )
+
 import os
 import numpy as np
 
@@ -38,7 +39,11 @@ embeddings = encoder.predict(X_scaled)
 # Save the encoder for inference and embeddings for retrieval
 os.makedirs('models/saved', exist_ok=True)
 encoder.save('models/saved/clinical_twin_encoder.keras') # Use .keras extension as recommended in newer TF versions
+autoencoder.save('models/saved/clinical_twin_autoencoder.keras') # Saving full model for Reconstruction evaluation
 np.save('models/saved/patient_embeddings.npy', embeddings)
 np.save('models/saved/synthea_subject_ids.npy', patient_ids)
+
+import joblib
+joblib.dump(scaler, 'models/saved/scaler.pkl')
 
 print("Training Completed. Model and Embeddings saved successfully.")
